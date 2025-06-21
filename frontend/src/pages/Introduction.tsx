@@ -30,7 +30,7 @@ const components = [
 export const Introduction = () => {
   return (
      <div className="uk-card uk-card-default uk-card-body uk-margin-top" >
-        <h3 className="uk-card-title">Introduction</h3>
+      <h1 className="uk-heading-primary">Introduction</h1>
         <Stepper components={components} steps={steps} />
     </div>
   );
