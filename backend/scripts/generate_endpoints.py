@@ -2,7 +2,7 @@ import os
 import textwrap
 from dotenv import load_dotenv
 
-load_dotenv(dotenv_path="./.env")
+load_dotenv()
 
 def main():
     webhook_url = os.getenv('WEBHOOK')

@@ -7,14 +7,11 @@ WORKDIR /app
 
 USER root
 
-COPY ./backend /app/backend
-COPY ./backend/requirements.txt /app/requirements.txt
-COPY ./backend/start.sh /app/start.sh
 COPY ./backend /app
 
-RUN pip install --no-cache-dir -r /app/requirements.txt
-RUN chmod +x /app/start.sh
+RUN pip install --no-cache-dir -r requirements.txt
+RUN chmod +x start.sh
 
-EXPOSE 5000 5005
+EXPOSE 5000 5005 5055
 
-ENTRYPOINT ["/app/start.sh"]
+ENTRYPOINT ["./start.sh"]

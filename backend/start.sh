@@ -46,5 +46,8 @@ rasa train || echo "Rasa training failed (possibly already trained)"
 echo "Starting Rasa server..."
 CUDA_VISIBLE_DEVICES="" rasa run -i 0.0.0.0 --enable-api --cors "*" --port 5005 &
 
+echo "Starting custom actions server..."
+rasa run actions --port 5055 &
+
 
 wait

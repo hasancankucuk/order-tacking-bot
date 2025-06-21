@@ -5,12 +5,6 @@ import { SQLPlayground } from "../components/introduction/SQLPlayground";
 import Stepper from "../components/introduction/Stepper";
 import { Test } from "../components/introduction/Test";
 
-const Step1 = () => <Bot/>;
-const Step2 = () => <DBViewer />;
-const Step3 = () => <SQLPlayground />
-const Step4 = () => <Test />;
-const Step5 = () => <Seeding />;
-
 const steps = [
   "Step 1: Bot Architecture",
   "Step 2: Database Viewer",

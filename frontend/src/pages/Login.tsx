@@ -99,16 +99,17 @@ export const Login = () => {
                         {loading ? (isRegister ? "Registering..." : "Logging in...") : (isRegister ? "Register" : "Login")}
                     </button>
                     <div className="uk-text-center uk-margin-small-top">
-                        <a
-                            href="#"
+                        <button
+                            type="button"
+                            className="uk-button uk-button-link"
+                            style={{ padding: 0, border: 'none', background: 'none', color: '#1e87f0', textDecoration: 'underline', cursor: 'pointer' }}
                             onClick={e => {
-                                e.preventDefault();
                                 setIsRegister(!isRegister);
                                 setError(null);
                             }}
                         >
                             {isRegister ? "Already have an account? Login" : "Don't have an account? Register"}
-                        </a>
+                        </button>
                     </div>
                 </form>
             </div>

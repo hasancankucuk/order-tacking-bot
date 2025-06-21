@@ -19,6 +19,7 @@ def main():
         max_ngram: 4 # set the maximum length of character n-grams to 4
       - name: DIETClassifier # This is a core Rasa component that predicts both the user's intent and extracts entities from the text
         epochs: 100
+        constrain_similarities: true
       - name: EntitySynonymMapper # This component maps extracted entities to their canonical form (e.g., mapping "library" and "lib" to a single "library" entity)
       - name: ResponseSelector #This component selects a predefined response based on the predicted intent and extracted entities
         epochs: 100

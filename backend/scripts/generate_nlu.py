@@ -46,7 +46,7 @@ def main():
         - I need to update my order
         - Can I switch the shipping method for order [2](order_id) to [Express](shipping_method)?
         - Please update my order [4](order_id) to include [Standard](shipping_method) shipping
-        - Update my order [14](order_id)'s shipping method to [Next Day](shipping_method)
+        - Update my order [14](order_id) shipping method to [Next Day](shipping_method)
 
     - intent: cancel_order
       examples: |
@@ -74,7 +74,7 @@ def main():
         - I'd like to order [2](quantity) [led desk lamp](product) to [Berlin](address)
         - Order [4](quantity) [desk lamp](product) to [Paris](address)
         - Place an order for [1](quantity) [mat](product) to [London](address)
-          - I need [2](quantity) [lamp](product) to [Tokyo](address)
+        - I need [2](quantity) [lamp](product) to [Tokyo](address)
                                   
     - intent: check_invoice
       examples: |
