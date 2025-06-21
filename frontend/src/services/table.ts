@@ -1,6 +1,7 @@
+const URL = process.env.REACT_APP_BACKEND_URL
 export const getTables = async () => {
     try {
-        const response = await fetch('http://localhost:5000/api/tables');
+        const response = await fetch(`${URL}/api/tables`);
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
@@ -13,7 +14,7 @@ export const getTables = async () => {
 
 export const getTableData = async (tableName: string) => {
     try {
-        const response = await fetch(`http://localhost:5000/api/tables/${tableName}`);
+        const response = await fetch(`${URL}/api/tables/${tableName}`);
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
@@ -29,7 +30,7 @@ export const getTableData = async (tableName: string) => {
 
 export const customQuery = async (query: string) => {
     try {
-        const response = await fetch(`http://localhost:5000/api/custom_query`, {
+        const response = await fetch(`${URL}/api/custom_query`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ query }),
@@ -46,7 +47,7 @@ export const customQuery = async (query: string) => {
 
 export const updateCustomQuery = async (query: string) => {
     try {
-        const response = await fetch(`http://localhost:5000/api/custom_query`, {
+        const response = await fetch(`${URL}/api/custom_query`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ query }),

@@ -1,6 +1,8 @@
+const URL = process.env.REACT_APP_BACKEND_URL;
+
 export const dropDatabase = async (api_url: string) => {
     try {
-        const response = await fetch(`http://localhost:5000/api/${api_url}`, {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/${api_url}`, {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' }
         });
@@ -17,7 +19,7 @@ export const dropDatabase = async (api_url: string) => {
 
 export const seedDb = async (role: string, api_url: string)=> {
     try {
-        const response = await fetch(`http://localhost:5000/api/${api_url}`, {
+        const response = await fetch(`${URL}/api/${api_url}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({role}),

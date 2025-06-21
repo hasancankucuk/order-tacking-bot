@@ -1,6 +1,7 @@
+const URL = process.env.REACT_APP_BACKEND_URL
 export async function fetchNluTest() {
   try {
-    const response = await fetch(`http://localhost:5000/api/test/nlu`);
+    const response = await fetch(`${URL}/api/test/nlu`);
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
@@ -14,7 +15,7 @@ export async function fetchNluTest() {
 
 export async function fetchCoreTest() {
   try {
-    const response = await fetch(`http://localhost:5000/api/test/core`);
+    const response = await fetch(`${URL}/api/test/core`);
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
@@ -28,8 +29,7 @@ export async function fetchCoreTest() {
 
 export const fetchResults = (filename: string): string => {
   try {
-    const baseUrl = "http://localhost:5000"
-    return `${baseUrl}${filename.startsWith("/") ? filename : "/" + filename}`;
+    return `${URL}${filename.startsWith("/") ? filename : "/" + filename}`;
   } catch (error) {
     console.error("Error fetching results:", error);
     return "";

@@ -1,4 +1,5 @@
 from dopplersdk import DopplerSDK
+import os
 
 def generate_env_file(access_token: str, project: str, config: str, output_path: str = ".env"):
     doppler = DopplerSDK()
@@ -24,8 +25,18 @@ def main():
     PROJECT = "order-tracking-bot"
     CONFIG = "dev"
 
-    generate_env_file(ACCESS_TOKEN, PROJECT, CONFIG)
-
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    backend_dir = os.path.dirname(script_dir) 
+    project_root = os.path.dirname(backend_dir) 
+    frontend_dir = os.path.join(project_root, "frontend")
+    
+    backend_env_path = os.path.join(backend_dir, ".env")
+    print(f"Creating .env file in backend: {backend_env_path}")
+    generate_env_file(ACCESS_TOKEN, PROJECT, CONFIG, backend_env_path)
+    
+    frontend_env_path = os.path.join(frontend_dir, ".env")
+    print(f"Creating .env file in frontend: {frontend_env_path}")
+    generate_env_file(ACCESS_TOKEN, PROJECT, CONFIG, frontend_env_path)
 
 if __name__ == "__main__":
     main()

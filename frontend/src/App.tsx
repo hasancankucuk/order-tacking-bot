@@ -1,4 +1,4 @@
-import React, { JSX, useState } from 'react';
+import React, { JSX, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import './App.css';
 import { Chatbot } from './components/chatbot/Chatbot';
@@ -14,6 +14,7 @@ import {
   Login
 } from './pages';
 
+
 function RequireAuth({ children }: { children: JSX.Element }) {
   const location = useLocation();
   const user = localStorage.getItem('user');
@@ -25,7 +26,7 @@ function RequireAuth({ children }: { children: JSX.Element }) {
 
 function App() {
   const [showChatbot, setShowChatbot] = useState(false);
-
+  console.log('Backend URL:', process.env.REACT_APP_BACKEND_URL)
   const user = localStorage.getItem('user');
   return (
     <Router>

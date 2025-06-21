@@ -1,6 +1,8 @@
+const RASA_URL = process.env.REACT_APP_RASA_URL;
+
 export const postMessage = async (sessionId: string, message: string) => {
     try {
-        const response = await fetch('http://localhost:5005/webhooks/rest/webhook', {
+        const response = await fetch(`${RASA_URL}/webhooks/rest/webhook`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -22,7 +24,7 @@ export const postMessage = async (sessionId: string, message: string) => {
 
 export const clearSession = async (sessionId: string) => {
     try {
-        const response = await fetch(`http://localhost:5005/conversations/${sessionId}/tracker/events`, {
+        const response = await fetch(`${RASA_URL}/conversations/${sessionId}/tracker/events`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify([{ event: 'restart' }]),
@@ -40,7 +42,7 @@ export const clearSession = async (sessionId: string) => {
 
 export const listProducts = async (sessionId: string) => {
     try {
-         const response = await fetch('http://localhost:5005/webhooks/rest/webhook', {
+         const response = await fetch(`${RASA_URL}/webhooks/rest/webhook`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

@@ -19,7 +19,6 @@ def main():
       - place_order
       - list_products
       - nlu_fallback
-      - clear
 
     entities:
       - order_id

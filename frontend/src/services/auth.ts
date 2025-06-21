@@ -1,7 +1,7 @@
-
+const URL = process.env.REACT_APP_BACKEND_URL
 export const updateUser = async (user: { id: number, username?: string, password?: string, email?: string, role?: string }, api_url: string) => {
     try {
-        const response = await fetch(`http://localhost:5000/api/${api_url}`, {
+        const response = await fetch(`${URL}/api/${api_url}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(user),
@@ -18,7 +18,7 @@ export const updateUser = async (user: { id: number, username?: string, password
 
 export const register = async (username: string, password: string, email: string, role: string, api_url: string) => {
     try {
-        const response = await fetch(`http://localhost:5000/api/${api_url}`, {
+        const response = await fetch(`${URL}/api/${api_url}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({username, password, email, role}),
@@ -35,7 +35,7 @@ export const register = async (username: string, password: string, email: string
 
 export const login = async (username: string, password: string, api_url: string) => {
     try {
-        const response = await fetch(`http://localhost:5000/api/${api_url}`, {
+        const response = await fetch(`${URL}/api/${api_url}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password }),
