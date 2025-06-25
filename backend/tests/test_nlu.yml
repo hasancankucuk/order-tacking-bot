@@ -1,0 +1,147 @@
+version: "3.1"
+
+nlu:
+
+- intent: greet
+  examples: |
+    - good afternoon
+    - hiya
+    - howdy
+    - greetings
+    - what's up
+    - how are you
+    - nice to meet you
+
+- intent: goodbye
+  examples: |
+    - catch you later
+    - until next time
+    - take care
+    - have a good day
+    - ciao
+    - talk to you soon
+    - see you
+
+- intent: accept
+  examples: |
+    - yep
+    - correct
+    - that's right
+    - exactly
+    - perfect
+    - agreed
+    - confirmed
+
+- intent: deny
+  examples: |
+    - nah
+    - negative
+    - not at all
+    - definitely not
+    - I disagree
+    - that's wrong
+    - incorrect
+
+# Order management test cases
+- intent: change_order
+  examples: |
+    - I need to modify order [15](order_id)
+    - Can I edit my order [ORD123](order_id)?
+    - Please change order [67](order_id) shipping to [Express](shipping_method)
+    - Update order [89](order_id) with [Standard](shipping_method) delivery
+    - Modify my order [ORD456](order_id)
+    - I want to alter order [22](order_id)
+    - Change the shipping for order [33](order_id) to [Next Day](shipping_method)
+
+- intent: cancel_order
+  examples: |
+    - Please cancel order [99](order_id)
+    - I want to cancel [5](order_id)
+    - Remove order [44](order_id) from my account
+    - Stop processing order [55](order_id)
+    - Delete my order [66](order_id)
+    - Cancel my recent order [77](order_id)
+    - I don't want order [88](order_id) anymore
+
+- intent: place_order
+  examples: |
+    - I want to buy [1](quantity) [smartphone cases](product) shipped to [Chicago](address)
+    - Order [5](quantity) [mats](product) for delivery to [Miami](address)
+    - Can I purchase [2](quantity) [keyboards](product)?
+    - I need [3](quantity) [speakers](product) sent to [Seattle](address)
+    - Buy [1](quantity) [lamp](product) for [Boston](address)
+    - Place order for [4](quantity) [cables](product) to [Denver](address)
+    - I'd like [2](quantity) [hard drives](product) delivered to [Phoenix](address)
+
+- intent: check_invoice
+  examples: |
+    - Show invoice for order [25](order_id)
+    - I need the bill for order [2](order_id)
+    - Can I get my receipt for order [36](order_id)?
+    - Display the invoice for order [47](order_id)
+    - Where's my billing info for order [58](order_id)?
+    - Get me the invoice for [69](order_id)
+
+- intent: check_cancel_fee
+  examples: |
+    - What's the cancellation charge?
+    - How much to cancel my order?
+    - Is there a penalty for cancelling?
+    - What does it cost to cancel?
+    - Any charges for order cancellation?
+    - Will I pay extra for cancelling?
+
+- intent: change_shipping_address
+  examples: |
+    - Update delivery address for order [11](order_id) to [San Francisco](new_address)
+    - Change shipping for order [22](order_id) to [Ankara](new_address)
+    - Please send order [33](order_id) to [Amsterdam](new_address) instead
+    - Redirect order [44](order_id) to [Berlin](new_address)
+    - Update address for order [55](order_id) to [Portland](new_address)
+
+- intent: list_products
+  examples: |
+    - What's available?
+    - Show available items
+    - What can I buy?
+    - Display your inventory
+    - What's in your catalog?
+    - Show me what you have
+    - List your merchandise
+    - What items do you offer?
+
+# Edge cases and variations
+- intent: greet
+  examples: |
+    - Hi there bot
+    - Hello order bot
+    - Hey assistant
+
+- intent: place_order
+  examples: |
+    - Get me [10](quantity) [power banks](product)
+    - I want [1](quantity) [smartphone](product) to [my home](address)
+    - Order [2](quantity) [cases](product) to [work address](address)
+
+- intent: cancel_order
+  examples: |
+    - Cancel [123456](order_id)
+    - Stop order [ABC123](order_id)
+
+- intent: change_order
+  examples: |
+    - I want to change my order
+    - Can I modify an order?
+    - Need to update my order
+
+- intent: place_order
+  examples: |
+    - I want to order something
+    - Can I buy a product?
+    - I need to place an order
+
+- intent: check_invoice
+  examples: |
+    - I need my invoice
+    - Show me my bill
+    - Where's my receipt?

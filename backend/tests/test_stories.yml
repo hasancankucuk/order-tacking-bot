@@ -1,0 +1,242 @@
+version: "3.1"
+
+stories:
+
+- story: test_greeting_and_goodbye
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: test_greeting_with_order_inquiry
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: list_products
+  - action: action_list_products
+
+- story: test_successful_order_placement
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: place_order
+    entities:
+    - quantity: "2"
+    - product: "laptop"
+    - address: "New York"
+  - action: action_place_order
+  - intent: accept
+  - action: utter_accept
+
+- story: test_order_placement_with_missing_info
+  steps:
+  - intent: place_order
+  - action: action_place_order
+  - intent: accept
+  - action: utter_accept
+
+- story: test_order_cancellation_flow
+  steps:
+  - intent: cancel_order
+    entities:
+    - order_id: "123"
+  - action: action_cancel_order
+  - intent: check_cancel_fee
+  - action: action_check_cancel_fee
+  - intent: accept
+  - action: utter_accept
+
+- story: test_order_change_request
+  steps:
+  - intent: change_order
+    entities:
+    - order_id: "456"
+    - shipping_method: "Express"
+  - action: action_change_order
+  - intent: accept
+  - action: utter_accept
+
+- story: test_invoice_check_flow
+  steps:
+  - intent: check_invoice
+    entities:
+    - order_id: "789"
+  - action: action_retrieve_invoice
+  - intent: accept
+  - action: utter_accept
+
+- story: test_address_change_flow
+  steps:
+  - intent: change_shipping_address
+    entities:
+    - order_id: "101"
+    - new_address: "Los Angeles"
+  - action: action_change_shipping_address
+  - intent: accept
+  - action: utter_accept
+
+
+- story: test_multiple_order_operations
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: place_order
+    entities:
+    - quantity: "1"
+    - product: "phone"
+    - address: "Frankfurt"
+  - action: action_place_order
+  - intent: change_order
+    entities:
+    - order_id: "202"
+    - shipping_method: "Standard"
+  - action: action_change_order
+  - intent: check_invoice
+    entities:
+    - order_id: "202"
+  - action: action_retrieve_invoice
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: test_order_cancellation_after_placement
+  steps:
+  - intent: place_order
+    entities:
+    - quantity: "3"
+    - product: "headphones"
+    - address: "Miami"
+  - action: action_place_order
+  - intent: cancel_order
+    entities:
+    - order_id: "13"
+  - action: action_cancel_order
+  - intent: check_cancel_fee
+  - action: action_check_cancel_fee
+
+
+- story: test_fallback_recovery
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: nlu_fallback
+  - action: utter_default
+  - intent: list_products
+  - action: action_list_products
+
+- story: test_deny_after_order_confirmation
+  steps:
+  - intent: place_order
+    entities:
+    - quantity: "1"
+    - product: "tablet"
+  - action: action_place_order
+  - intent: deny
+  - action: utter_deny
+  - intent: cancel_order
+    entities:
+    - order_id: "54"
+  - action: action_cancel_order
+
+- story: test_address_change_with_confirmation
+  steps:
+  - intent: change_shipping_address
+    entities:
+    - order_id: "505"
+    - new_address: "Seattle"
+  - action: action_change_shipping_address
+  - intent: accept
+  - action: utter_accept
+  - intent: check_invoice
+    entities:
+    - order_id: "505"
+  - action: action_retrieve_invoice
+
+
+- story: test_product_list_to_order
+  steps:
+  - intent: list_products
+  - action: action_list_products
+  - intent: place_order
+    entities:
+    - quantity: "2"
+    - product: "lamp"
+    - address: "Boston"
+  - action: action_place_order
+
+- story: test_multiple_product_inquiries
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: list_products
+  - action: action_list_products
+  - intent: list_products
+  - action: action_list_products
+  - intent: place_order
+    entities:
+    - quantity: "1"
+    - product: "smartphone case"
+  - action: action_place_order
+
+
+- story: test_incomplete_order_info
+  steps:
+  - intent: place_order
+  - action: action_place_order
+  - intent: change_order
+  - action: action_change_order
+  - intent: accept
+  - action: utter_accept
+
+- story: test_check_invoice_without_order_id
+  steps:
+  - intent: check_invoice
+  - action: action_retrieve_invoice
+  - intent: deny
+  - action: utter_deny
+
+
+- story: test_comprehensive_order_journey
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: list_products
+  - action: action_list_products
+  - intent: place_order
+    entities:
+    - quantity: "2"
+    - product: "speakers"
+    - address: "New York"
+  - action: action_place_order
+  - intent: accept
+  - action: utter_accept
+  - intent: change_shipping_address
+    entities:
+    - order_id: "1"
+    - new_address: "Ankara"
+  - action: action_change_shipping_address
+  - intent: check_invoice
+    entities:
+    - order_id: "1"
+  - action: action_retrieve_invoice
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: test_order_with_different_quantities
+  steps:
+  - intent: place_order
+    entities:
+    - quantity: "10"
+    - product: "yoga mats"
+    - address: "Berlin"
+  - action: action_place_order
+
+- story: test_express_shipping_change
+  steps:
+  - intent: change_order
+    entities:
+    - order_id: "707"
+    - shipping_method: "Next Day"
+  - action: action_change_order
+  - intent: check_cancel_fee
+  - action: action_check_cancel_fee
