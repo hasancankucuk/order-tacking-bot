@@ -32,7 +32,7 @@ class ActionCheckInvoice(Action):
                 if invoice_info:
 
                     invoice_path = invoice_generator(invoice_info)
-                    backend_url = os.getenv('process.env.REACT_APP_BACKEND_URL')
+                    backend_url = os.getenv('REACT_APP_BACKEND_URL')
                     filename = invoice_path.replace('invoice/', '')
                     pdf_url = f"{backend_url}/invoice/{filename}"
                     print(f"Generated PDF URL: {pdf_url}")
